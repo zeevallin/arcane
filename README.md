@@ -12,7 +12,16 @@ Inspired by [Pundit](https://github.com/elabs/pundit)
 
 ## Usage
 
-First of all, include `Arcane` in your controller. This will give you access to the `refine` helper.
+This is how easy it will be:
+
+```ruby
+@article = Article.new refine(Article, :create)
+```
+
+### Include the Helper
+
+Though, we need to do a couple of things before we can get started. First of all include `Arcane` in your
+controller. This will give you access to the `refine` helper.
 
 ```ruby
 # app/controllers/application_controller.rb
@@ -20,6 +29,8 @@ class ApplicationController < ActionController::Base
   include Arcane
 end
 ```
+
+### Create your first Refinery
 
 Before you can use the `refine` helper, you need a Refinery for the model you want to pass parameters to.
 Simply create the directory `/app/refineries` in your Rails project. Create a Refinery your model, in this
@@ -29,9 +40,13 @@ Methods defined in the refinery should reflect the controller method for clarity
 want it to be. These methods must return an array containing the same parameters you would otherwise send
 to strong parameters.
 
+It can be initiated using a `Struct` which accepts an `object` and a `user`. The `refine` method will
+automatically send `current_user`, if present to the refinery as well as the object you want to apply
+the parameters on.
+
 ```ruby
 # app/refineries/article_refinery.rb
-class ArticleRefinery < Arcane::Refinery
+class ArticleRefinery < Struct.new(:object,:user)
   def create
     [:title] + update
   end
@@ -40,6 +55,15 @@ class ArticleRefinery < Arcane::Refinery
   end
 end
 ```
+
+**Note**, for convenience sake there is a class called `Arcane::Refinery` which you can use instead of
+the struct. This class gives you the basic functionality of a refinery for free.
+
+```ruby
+class CommentRefinery < Arcane::Refinery; end
+```
+
+### Using Arcane in your controller
 
 Next up, using the `refine` helper. The helper can be called from anywhere in your controller and views
 and accepts one parameter, the object for which you want to *refine* the parameters, then followed by
