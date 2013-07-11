@@ -1,6 +1,6 @@
-module Refinery
+module Arcane
 
-  class Base
+  class Refinery
 
     attr_reader :object, :user
 

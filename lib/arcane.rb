@@ -1,28 +1,28 @@
-require "refinery/version"
-require "refinery/finder"
-require "refinery/chain"
-require "refinery/base"
+require "arcane/version"
+require "arcane/finder"
+require "arcane/chain"
+require "arcane/refinery"
 
 require 'active_support/concern'
 require 'active_support/core_ext/string/inflections'
 require 'active_support/core_ext/object/blank'
 require 'strong_parameters'
 
-module Refinery
+module Arcane
 
   extend ActiveSupport::Concern
 
   included do
     if respond_to?(:helper_method)
-      helper_method :refinery
+      helper_method :arcane
     end
     if respond_to?(:hide_action)
-      hide_action :refinery
+      hide_action :arcane
     end
   end
 
   def refine(object,*args)
-    Refinery::Chain.new(params,object,current_user)
+    Arcane::Chain.new(params,object,current_user)
   end
 
 end

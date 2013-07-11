@@ -1,4 +1,4 @@
-# Refinery
+# Arcane
 Easy to use parameter filter extending strong parameters.
 
 ## Installation
@@ -6,7 +6,7 @@ Easy to use parameter filter extending strong parameters.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'refinery'
+gem 'arcane'
 ```
 
 And then execute:
@@ -18,7 +18,7 @@ $ bundle
 Or install it yourself as:
 
 ```bash
-$ gem install refinery
+$ gem install arcane
 ```
 
 ## Usage

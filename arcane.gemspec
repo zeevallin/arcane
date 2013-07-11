@@ -1,18 +1,18 @@
 # -*- encoding: utf-8 -*-
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'refinery/version'
+require 'arcane/version'
 
 Gem::Specification.new do |gem|
 
-  gem.name          = "refinery"
-  gem.version       = Refinery::VERSION
+  gem.name          = "arcane"
+  gem.version       = Arcane::VERSION
   gem.authors       = ["Philip Vieira", "Cloudsdale"]
   gem.email         = ["philip@vallin.se"]
 
   gem.description   = "Parameter filter done OO, extending strong parameters."
   gem.summary       = "Extension for strong_parameters."
-  gem.homepage      = "https://github.com/cloudsdaleapp/refinery"
+  gem.homepage      = "https://github.com/cloudsdaleapp/arcane"
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }

@@ -1,4 +1,4 @@
-module Refinery
+module Arcane
 
   class Finder
 
@@ -8,12 +8,12 @@ module Refinery
       @object = object
     end
 
-    def refinery
+    def arcane
       klass = find
       klass = klass.constantize if klass.is_a?(String)
       klass
     rescue NameError
-      Refinery::Base
+      Arcane::Refinery
     end
 
     def self.object_name(object)
@@ -32,10 +32,10 @@ module Refinery
   private
 
     def find
-      if object.respond_to?(:refinery_class)
-        object.refinery_class
-      elsif object.class.respond_to?(:refinery_class)
-        object.class.refinery_class
+      if object.respond_to?(:arcane_class)
+        object.arcane_class
+      elsif object.class.respond_to?(:arcane_class)
+        object.class.arcane_class
       else
         klass = self.class.object_name(object)
         "#{klass}Refinery"

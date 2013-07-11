@@ -1,10 +1,10 @@
-require "refinery"
+require "arcane"
 require "pry"
 require "active_support/core_ext"
 require "active_model/naming"
 
 class Article; end
-class ArticleRefinery < Refinery::Base
+class ArticleRefinery < Arcane::Refinery
 
   def create
     update + [ { links: [:blog, :site] } ]
@@ -25,7 +25,7 @@ class ArticleRefinery < Refinery::Base
 end
 
 class Task; end
-class TaskRefinery < Refinery::Base
+class TaskRefinery < Arcane::Refinery
 
   def self.root
     false

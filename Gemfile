@@ -1,2 +1,2 @@
 source 'https://rubygems.org'
-gemspec # Specify your gem's dependencies in refinery.gemspec
+gemspec # Specify your gem's dependencies in arcane.gemspec
