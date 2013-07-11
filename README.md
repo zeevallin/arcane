@@ -3,9 +3,10 @@
 [![Build Status](https://travis-ci.org/cloudsdaleapp/arcane.png?branch=master)](https://travis-ci.org/cloudsdaleapp/arcane)
 [![Gem Version](https://badge.fury.io/rb/arcane.png)](http://badge.fury.io/rb/arcane)
 
-Easy to use parameter filter extending [Strong Parameters](https://github.com/rails/strong_parameters).
-Arcane provides you with helpers which guide you in leveraging regular Ruby classes and object oriented
-design patterns to organise and easily harnass the power of strong parameters in Rails 3 and 4.
+Easy to use parameter management, extending [Strong Parameters](https://github.com/rails/strong_parameters),
+making them a first class citizen. Arcane provides you with helpers which guide you in leveraging regular
+Ruby classes and object oriented design patterns to organise and easily harnass the power of strong parameters
+in Rails 3 and 4.
 
 Arcane magic is real and reliable, no cheap tricks.
 Inspired by [Pundit](https://github.com/elabs/pundit)
