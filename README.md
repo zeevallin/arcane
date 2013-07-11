@@ -1,6 +1,7 @@
 # Arcane
 
 [![Build Status](https://travis-ci.org/cloudsdaleapp/arcane.png?branch=master)](https://travis-ci.org/cloudsdaleapp/arcane)
+[![Gem Version](https://badge.fury.io/rb/arcane.png)](http://badge.fury.io/rb/arcane)
 
 Easy to use parameter filter extending [Strong Parameters](https://github.com/rails/strong_parameters).
 Arcane provides you with helpers which guide you in leveraging regular Ruby classes and object oriented
