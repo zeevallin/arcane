@@ -5,8 +5,6 @@ rvm:
   - 1.9.2
   - jruby-19mode
   - rbx-19mode
-  - ruby-head
-  - jruby-head
 
 env:
   - "strong_parameters=0.2.0"
