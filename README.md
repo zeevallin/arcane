@@ -144,9 +144,11 @@ $ bundle
 
 ## To-do
 
-* Write rails generators
-* List features
-* Add Documentation
+- [ ] Write rails generators
+- [x] List features
+- [x] Add Documentation
+- [ ] Add documentation for HATEOAS
+- [ ] Automatic method detection
 
 ## Contributing
 
