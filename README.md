@@ -181,12 +181,12 @@ $ bundle
 
 ## To-do
 
-- [ ] Explain Arcane::Refinery
+- [X] Explain Arcane::Refinery
 - [ ] Write rails generators
 - [x] List features
 - [x] Add Documentation
 - [ ] Add documentation for HATEOAS
-- [ ] Automatic method detection
+- [X] Automatic method detection
 - [ ] RSpec helpers to test Arcane
 - [ ] Configuration
 
