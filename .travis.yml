@@ -7,7 +7,6 @@ rvm:
   - rbx-19mode
 
 env:
-  - "strong_parameters=0.2.0"
   - "strong_parameters=0.2.1"
   - "activesupport=3.2.13"
   - "activesupport=4.0.0"
