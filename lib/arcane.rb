@@ -14,10 +14,10 @@ module Arcane
 
   included do
     if respond_to?(:helper_method)
-      helper_method :arcane
+      helper_method :refine
     end
     if respond_to?(:hide_action)
-      hide_action :arcane
+      hide_action :refine
     end
   end
 
