@@ -144,6 +144,7 @@ $ bundle
 
 ## To-do
 
+- [ ] Explain Arcane::Refinery
 - [ ] Write rails generators
 - [x] List features
 - [x] Add Documentation
