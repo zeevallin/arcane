@@ -149,6 +149,8 @@ $ bundle
 - [x] Add Documentation
 - [ ] Add documentation for HATEOAS
 - [ ] Automatic method detection
+- [ ] RSpec helpers to test Arcane
+- [ ] Configuration
 
 ## Contributing
 
