@@ -55,13 +55,13 @@ In context of the controller method it might look something like this:
 class ArticlesController < ApplicationController
 
   def create
-    @article = Article.new(refine(Article).create)
+    @article = Article.new(refine(Article,:create))
     @article.save
   end
-  
+
   def update
     @article = Article.find(params[:id])
-    @article.update_attributes(refine(@article).create)
+    @article.update_attributes(refine(@article,:update))
   end
 
 end
@@ -70,7 +70,13 @@ end
 
 ## Features
 
+### Custom Parameters
+Arcane isn't all magic (though mostly). You can pass your own parameters to the `refine` method, without
+having to worry which order you put them in as long as the permit object is the first one.
 ```ruby
+  my_params = { article: { title: "Hello" } }
+  refine(@article,my_params,:create)
+  refine(@article,:update,my_params)
 ```
 
 ## Requirements

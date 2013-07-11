@@ -22,7 +22,27 @@ module Arcane
   end
 
   def refine(object,*args)
-    Arcane::Chain.new(params,object,current_user)
+
+    current_user = nil unless respond_to?(:current_user)
+
+    opts = { }
+
+    args.each do |arg|
+      if [String,Symbol].any? { |c| arg.kind_of?(c) }
+        opts[:method] ||= arg
+      elsif [Hash,HashWithIndifferentAccess,ActionController::Parameters].any? { |c| arg.kind_of?(c) }
+        opts[:params] ||= arg
+      elsif current_user.nil?
+        opts[:user]   ||= arg
+      end
+    end
+
+    opts[:params] ||= params
+    opts[:user]   ||= current_user
+    opts[:object] ||= object.respond_to?(:new) ? object.new : object
+
+    chain = Arcane::Chain.new(opts[:params],opts[:object],opts[:user])
+    return opts[:method].present? ? chain.send(opts[:method]) : chain
   end
 
 end

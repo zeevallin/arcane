@@ -19,11 +19,20 @@ describe Arcane do
       }
     })
   end
+  let(:custom_params) do
+    HashWithIndifferentAccess.new({
+      article: {
+        tags: ["test","greeting"]
+      }
+    })
+  end
 
   describe '#refine' do
 
     it { controller.refine(article).should be_a Arcane::Chain }
+    it { controller.refine(article,:update).should be_a ActionController::Parameters }
     it { controller.refine(article).update.should be_a ActionController::Parameters }
+    it { controller.refine(Article)._object.should be_a Article }
 
     it 'filters parameters correctly' do
       controller.refine(article).update.should eq expected_params(:title,:content)
@@ -35,6 +44,11 @@ describe Arcane do
 
     it 'filters nested scalar parameters correctly' do
       controller.refine(article).publish.should eq expected_params(:title,:content,:tags)
+    end
+
+    it 'filters custom parameters correctly' do
+      controller.refine(article,custom_params,:publish).should eq expected_params(:tags)
+      controller.refine(article,:publish,custom_params).should eq expected_params(:tags)
     end
 
   end
