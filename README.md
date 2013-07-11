@@ -46,7 +46,7 @@ and accepts one parameter, the object for which you want to *refine* the paramet
 calling the method for what parameters you want.
 
 ```ruby
-refine(@article).create
+refined_params = refine @article, :create
 ```
 
 In context of the controller method it might look something like this:
