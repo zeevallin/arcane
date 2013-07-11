@@ -1,4 +1,7 @@
 # Arcane
+
+[![Build Status](https://travis-ci.org/cloudsdaleapp/arcane.png?branch=master)](https://travis-ci.org/cloudsdaleapp/arcane)
+
 Easy to use parameter filter extending [Strong Parameters](https://github.com/rails/strong_parameters).
 Arcane provides you with helpers which guide you in leveraging regular Ruby classes and object oriented
 design patterns to organise and easily harnass the power of strong parameters in Rails 3 and 4.
