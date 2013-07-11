@@ -1,4 +1,4 @@
-module Refine
+module Refinery
 
   class Chain
 
@@ -8,7 +8,7 @@ module Refine
       @_user           = _user
       @_object         = _object
       @_params         = ActionController::Parameters.new(_params)
-      @_refinery_class = Refine::Finder.new(_object).refinery
+      @_refinery_class = Refinery::Finder.new(_object).refinery
       @_refinery       = @_refinery_class.new(_object,_user)
     end
 
@@ -27,7 +27,7 @@ module Refine
       elsif _refinery_class.respond_to?(:root)
         _root = _refinery_class.root
       else
-        _root = Refine::Finder.object_name(_object)
+        _root = Refinery::Finder.object_name(_object)
       end
 
       if _root.present?

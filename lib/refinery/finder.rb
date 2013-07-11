@@ -1,4 +1,4 @@
-module Refine
+module Refinery
 
   class Finder
 
@@ -13,7 +13,7 @@ module Refine
       klass = klass.constantize if klass.is_a?(String)
       klass
     rescue NameError
-      Refine::Refinery
+      Refinery::Base
     end
 
     def self.object_name(object)

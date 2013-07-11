@@ -1,6 +1,6 @@
-module Refine
+module Refinery
 
-  class Refinery
+  class Base
 
     attr_reader :object, :user
 

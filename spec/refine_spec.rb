@@ -1,11 +1,10 @@
 require 'spec_helper'
 
-describe Refine do
+describe Refinery do
 
   let(:user)    { double }
   let(:article) { Article.new }
-  let(:refine)  { Refine.refine() }
-  let(:controller) { double(:current_user => user, :params => params).tap { |c| c.extend(Refine) } }
+  let(:controller) { double(:current_user => user, :params => params).tap { |c| c.extend(Refinery) } }
   let(:params) do
     HashWithIndifferentAccess.new({
       action: 'create',
@@ -23,7 +22,7 @@ describe Refine do
 
   describe '#refine' do
 
-    it { controller.refine(article).should be_a Refine::Chain }
+    it { controller.refine(article).should be_a Refinery::Chain }
     it { controller.refine(article).update.should be_a ActionController::Parameters }
 
     it 'filters parameters correctly' do

@@ -1,12 +1,12 @@
 require 'spec_helper'
 
-describe Refine::Refinery do
+describe Refinery::Base do
 
   let(:user) { double }
   let(:object) { Article.new }
 
   before(:each) do
-    @refinery = Refine::Refinery.new(object,user)
+    @refinery = Refinery::Base.new(object,user)
   end
 
   describe '.new' do
@@ -17,7 +17,7 @@ describe Refine::Refinery do
     end
 
     it 'does not set user if no user present' do
-      @refinery = Refine::Refinery.new(object)
+      @refinery = Refinery::Base.new(object)
       @refinery.user.should be_nil
     end
 

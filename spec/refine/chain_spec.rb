@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe Refine::Chain do
+describe Refinery::Chain do
 
-  let(:chain) { Refine::Chain.new(params,object,user) }
+  let(:chain) { Refinery::Chain.new(params,object,user) }
 
   let(:user)            { double }
   let(:object)          { Article.new }
@@ -32,7 +32,7 @@ describe Refine::Chain do
     end
 
     it 'converts the object to ActionController::Parameters' do
-      chain = Refine::Chain.new(hash_params,object,user)
+      chain = Refinery::Chain.new(hash_params,object,user)
       chain._params.should be_a ActionController::Parameters
     end
 
@@ -49,7 +49,7 @@ describe Refine::Chain do
     end
 
     context 'without root in params' do
-      let(:chain) { Refine::Chain.new(params[:article],object,user) }
+      let(:chain) { Refinery::Chain.new(params[:article],object,user) }
       it 'raises an error' do
         expect { chain.void_method }.to raise_error ActionController::ParameterMissing
       end
