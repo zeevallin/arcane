@@ -73,10 +73,49 @@ end
 ### Custom Parameters
 Arcane isn't all magic (though mostly). You can pass your own parameters to the `refine` method, without
 having to worry which order you put them in as long as the permit object is the first one.
+
 ```ruby
   my_params = { article: { title: "Hello" } }
   refine(@article,my_params,:create)
   refine(@article,:update,my_params)
+```
+
+### Default Parameters
+You are able to specify a `default` method in your refinery which will be prioritized if no the method
+you call does not exist. **While you should probably never put yourself in this situation**, the feature
+is available for those edge case scenarios where you need it.
+
+```ruby
+class AmbiguityRefinery < Arcane::Refinery
+  def default
+    [:data]
+  end
+end
+```
+
+### Root Requirement
+You are able to disable or change the root requirement. Let's say you have a sessions endpoint where
+you don't have your username and password parameters wrapped in a root. Now you can use the root class
+method and set it to nil or false and it will automatically not require it.
+
+```ruby
+class SessionRefinery < Arcane::Refinery
+  def self.root
+    false
+  end
+end
+```
+
+Or if you have a `MeRefinery` for allowing certain parameters on a `/me.json` which is still a user
+object. You can just set a root class method on your refinery and it will use this to determine if
+the requirements.
+
+```ruby
+class MeRefinery < UserRefinery
+  def self.root
+    :user
+  end
+end
 ```
 
 ## Requirements
