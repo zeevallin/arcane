@@ -104,10 +104,23 @@ having to worry which order you put them in as long as the permit object is the 
   refine(@article,:update,my_params)
 ```
 
+### Automatic Method Detection
+If you have specified no refinery method in your call to `refine`, Arcane tries to find out for itself
+what method to use. If you send the params in from a rails controller, Arcane will use the `action` key
+on the parameters and use your refinery. *If you want to know how to handle fallbacks, see next feature.*
+
+```ruby
+class CommentsController < ApplicationController
+  def update
+    @comment = Comment.find(params[:id])
+    @comment.update_attributes refine @comment
+  end
+end
+```
+
 ### Default Parameters
 You are able to specify a `default` method in your refinery which will be prioritized if no the method
-you call does not exist. **While you should probably never put yourself in this situation**, the feature
-is available for those edge case scenarios where you need it.
+you call does not exist. If default is not specified it will be as the refinery returned an empty array.
 
 ```ruby
 class AmbiguityRefinery < Arcane::Refinery

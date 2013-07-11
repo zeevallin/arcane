@@ -37,6 +37,7 @@ module Arcane
       end
     end
 
+    opts[:method] ||= params[:action]
     opts[:params] ||= params
     opts[:user]   ||= current_user
     opts[:object] ||= object.respond_to?(:new) ? object.new : object

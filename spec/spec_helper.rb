@@ -34,3 +34,16 @@ class TaskRefinery < Arcane::Refinery
 end
 
 class Shape; end
+
+class Comment; end
+class CommentRefinery < Arcane::Refinery
+
+  def create
+    [:content,:score]
+  end
+
+  def default
+    [:score]
+  end
+
+end
