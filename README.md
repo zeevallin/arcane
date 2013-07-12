@@ -224,7 +224,7 @@ class CubeRefinery
 end
 ```
 
-### Building a HATEOAS API templates
+### Building HATEOAS API templates
 As your refinery is a class that accepts an object and a user you can invoke it on it's own. This is
 really good if you want your application to generate endpoints under different scenarios dynamically.
 
