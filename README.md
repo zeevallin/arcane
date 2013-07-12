@@ -11,6 +11,14 @@ in Rails 3 and 4.
 Arcane magic is real and reliable, no cheap tricks.
 Inspired by [Pundit](https://github.com/elabs/pundit)
 
+#### Breaking Changes - Check [CHANGELOG.md](https://github.com/cloudsdaleapp/arcane/blob/master/CHANGELOG.md)
+
+**This branch is showing a pre-release of Arcane, to install the this release, do this:**
+
+```ruby
+  gem "arcane", "~> 1.0.0.pre"
+```
+
 ## Usage
 
 This is how easy it is to use:
