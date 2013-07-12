@@ -135,10 +135,10 @@ the arcane methods. This is good if you have some other way of getting data in t
 the context of a controller.
 
 ```ruby
-  @user, @post = User.find(1), Post.find(24)
+@user, @post = User.find(1), Post.find(24)
 
-  my_params = ActionController::Parameters.new({ post: { content: "Hello" } })
-  my_params.for(@post).as(@user).on(:create)
+my_params = ActionController::Parameters.new({ post: { content: "Hello" } })
+my_params.for(@post).as(@user).on(:create)
 ```
 
 ### Automatic method detection.
@@ -156,6 +156,21 @@ end
 class CommentRefinery < Arcane::Refinery
   def update
     [:email,:name,:text]
+  end
+end
+```
+
+### Easily manage conditional parameters
+As an application grows larger, you usually want to filter what parameters based on some rules, usually
+by checking the role of your current user or the state of the object you want to set the parameters on.
+Arcane easily helps you do this.
+
+```ruby
+class UserRefinery < Arcane::Refinery
+  def update
+    params = [ { abuse_reports: AbuseReportRefinery.new(AbuseReport.new,user).create } ]
+    params += [:suspended]   if user.admin?
+    params += [:name,:email] if user.admin? or user == object
   end
 end
 ```
