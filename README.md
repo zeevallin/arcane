@@ -141,6 +141,22 @@ my_params = ActionController::Parameters.new({ post: { content: "Hello" } })
 my_params.for(@post).as(@user).on(:create)
 ```
 
+If you want to delegate some behaviour to your model, you can always create your own constructor.
+
+```ruby
+class Post < ActiveRecord::Base
+  def self.refined_create(params)
+    create(params.for(self).refine)
+  end
+end
+
+class PostsController
+  def create
+    @post = Post.refined_create(params)
+  end
+end
+```
+
 ### Automatic method detection.
 If you have specified no refinery action in your chain to params, Arcane tries to find out for itself
 what method to use. Arcane uses the action key in the rails parameters to determine the refinery method.
