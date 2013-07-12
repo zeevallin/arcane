@@ -108,8 +108,8 @@ class GameController < ApplicationController
   end
 
   def update
-    @article.find(params[:id])
-    @article.update_attributes params.for(@article).as(current_user).refine
+    @game.find(params[:id])
+    @game.update_attributes params.for(@game).as(current_user).refine
   end
 
   def update_many
@@ -141,7 +141,7 @@ the context of a controller.
   my_params.for(@post).as(@user).on(:create)
 ```
 
-### Automatic Method Detection
+### Automatic method detection.
 If you have specified no refinery action in your chain to params, Arcane tries to find out for itself
 what method to use. Arcane uses the action key in the rails parameters to determine the refinery method.
 
@@ -160,7 +160,7 @@ class CommentRefinery < Arcane::Refinery
 end
 ```
 
-### Default parameters
+### Default parameters.
 You are able to specify a `default` method in your refinery which will be prioritized if no the method
 you call does not exist. If default is not specified it will be as the refinery returned an empty array.
 
@@ -172,7 +172,7 @@ class AmbiguityRefinery < Arcane::Refinery
 end
 ```
 
-### Custom root requrement
+### Custom root requirement.
 You are able to disable or change the root requirement. Let's say you have a sessions endpoint where
 you don't have your username and password parameters wrapped in a root. Now you can use the root class
 method and set it to nil or false and it will automatically not require it.
@@ -197,7 +197,7 @@ class MeRefinery < UserRefinery
 end
 ```
 
-### Refinery Inheritence
+### Refinery inheritence.
 Say you have quite similar needs between two different models, one of them might even have inherited
 from the other. As arcane's refineries are just regular ruby models you can easily inherit from one
 to another and it will just work.
