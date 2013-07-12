@@ -11,6 +11,8 @@ in Rails 3 and 4.
 Arcane magic is real and reliable, no cheap tricks.
 Inspired by [Pundit](https://github.com/elabs/pundit)
 
+#### Is it production ready? No, this is a work in progress.
+
 ## Usage
 
 This is how easy it will be:
