@@ -224,6 +224,19 @@ class CubeRefinery
 end
 ```
 
+### Building a HATEOAS API templates
+As your refinery is a class that accepts an object and a user you can invoke it on it's own. This is
+really good if you want your application to generate endpoints under different scenarios dynamically.
+
+```ruby
+
+track_params = TrackRefinery.new(Track.new,User.new).create
+# => [:title,:description,:duration]
+
+track_url("{track}") + "?" + "{#{track_params.join(",")}}"
+# => "http://www.music.com/tracks/{track}?{title,desc,duration}"
+```
+
 ## Requirements
 
 Currently this gem is only supported for Rails and with any of these ruby versions:
@@ -250,14 +263,14 @@ $ bundle
 
 ## To-do
 
-- [X] Explain Arcane::Refinery
-- [ ] Write rails generators
+- [x] Explain Arcane::Refinery
+- [-] Write rails generators
 - [x] List features
 - [x] Add Documentation
-- [ ] Add documentation for HATEOAS
-- [X] Automatic method detection
-- [ ] RSpec helpers to test Arcane
-- [ ] Configuration
+- [x] Add documentation for HATEOAS
+- [x] Automatic method detection
+- [-] RSpec helpers to test Arcane
+- [-] Configuration
 
 ## Contributing
 
