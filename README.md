@@ -152,7 +152,7 @@ class CommentRefinery < Arcane::Refinery
 end
 ```
 
-### Default Parameters
+### Default parameters
 You are able to specify a `default` method in your refinery which will be prioritized if no the method
 you call does not exist. If default is not specified it will be as the refinery returned an empty array.
 
@@ -164,7 +164,7 @@ class AmbiguityRefinery < Arcane::Refinery
 end
 ```
 
-### Root Requirement
+### Custom root requrement
 You are able to disable or change the root requirement. Let's say you have a sessions endpoint where
 you don't have your username and password parameters wrapped in a root. Now you can use the root class
 method and set it to nil or false and it will automatically not require it.
@@ -185,6 +185,33 @@ the requirements.
 class MeRefinery < UserRefinery
   def self.root
     :user
+  end
+end
+```
+
+### Refinery Inheritence
+Say you have quite similar needs between two different models, one of them might even have inherited
+from the other. As arcane's refineries are just regular ruby models you can easily inherit from one
+to another and it will just work.
+
+```ruby
+class Square
+  attr :height, :width
+end
+
+class Cube < Square
+  attr :depth
+end
+
+class SquareRefinery
+  def create
+    [:height,:width]
+  end
+end
+
+class CubeRefinery
+  def create
+    [:depth] + super
   end
 end
 ```
