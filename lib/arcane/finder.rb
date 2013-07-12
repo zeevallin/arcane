@@ -8,7 +8,7 @@ module Arcane
       @object = object
     end
 
-    def arcane
+    def refinery
       klass = find
       klass = klass.constantize if klass.is_a?(String)
       klass
@@ -33,9 +33,9 @@ module Arcane
 
     def find
       if object.respond_to?(:arcane_class)
-        object.arcane_class
+        object.refinery_class
       elsif object.class.respond_to?(:arcane_class)
-        object.class.arcane_class
+        object.class.refinery_class
       else
         klass = self.class.object_name(object)
         "#{klass}Refinery"

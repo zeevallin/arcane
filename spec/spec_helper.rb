@@ -3,6 +3,19 @@ require "pry"
 require "active_support/core_ext"
 require "active_model/naming"
 
+class NilModel; end
+class NilModelRefinery < Struct.new(:object,:user)
+
+  def create
+    [:attribute]
+  end
+
+  def default
+    create
+  end
+
+end
+
 class Article; end
 class ArticleRefinery < Arcane::Refinery
 
@@ -46,4 +59,30 @@ class CommentRefinery < Arcane::Refinery
     [:score]
   end
 
+end
+
+def article_params
+  ActionController::Parameters.new({
+    action: 'create',
+    article: {
+      title:   "hello",
+      content: "world",
+      links: [
+        { blog: "http://blog.example.com" },
+        { site: "http://www.example.com" },
+      ],
+      tags: ["test","greeting"]
+    }
+  })
+end
+
+def nil_model_params(opts={})
+  ActionController::Parameters.new({
+    action: 'unknown',
+    nil_model: { attribute: :value }
+  }).merge(opts)
+end
+
+def expected_params(object_name,*includes)
+  params[object_name].reject { |k,_| !includes.include? k.to_sym }
 end

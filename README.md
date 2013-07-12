@@ -11,20 +11,30 @@ in Rails 3 and 4.
 Arcane magic is real and reliable, no cheap tricks.
 Inspired by [Pundit](https://github.com/elabs/pundit)
 
-#### Is it production ready? No, this is a work in progress.
-
 ## Usage
 
-This is how easy it will be:
+This is how easy it is to use:
 
 ```ruby
-@article = Article.new refine(Article, :create)
+def create
+  @article = Article.new params.for(Article).refine
+end
+
+def update
+  @article.find(params[:id])
+  @article.update_attributes params.for(@article).as(current_user).refine
+end
+
+def destroy
+  @article.find(params[:id])
+  @article.update_attributes params.for(@article).on(:destroy).refine
+end
 ```
 
-### Include the Helper
+### Include the Arcane Module
 
 Though, we need to do a couple of things before we can get started. First of all include `Arcane` in your
-controller. This will give you access to the `refine` helper.
+controller. This will extend strong parameters with all the arcane methods you saw above in the example.
 
 ```ruby
 # app/controllers/application_controller.rb
@@ -35,7 +45,7 @@ end
 
 ### Create your first Refinery
 
-Before you can use the `refine` helper, you need a Refinery for the model you want to pass parameters to.
+Before you can use the parameter methods, you need a Refinery for the model you want to pass parameters to.
 Simply create the directory `/app/refineries` in your Rails project. Create a Refinery your model, in this
 case Article. `/app/refineries/article_refinery.rb`. Create a class in that file called `ArticleRefinery`.
 
@@ -43,9 +53,8 @@ Methods defined in the refinery should reflect the controller method for clarity
 want it to be. These methods must return an array containing the same parameters you would otherwise send
 to strong parameters.
 
-It can be initiated using a `Struct` which accepts an `object` and a `user`. The `refine` method will
-automatically send `current_user`, if present to the refinery as well as the object you want to apply
-the parameters on.
+It can be initiated using a `Struct` which accepts an `object` and a `user`. Arcane will automatically send
+`current_user`, if present to the refinery as well as the object you want to apply the parameters on.
 
 ```ruby
 # app/refineries/article_refinery.rb
@@ -68,55 +77,77 @@ class CommentRefinery < Arcane::Refinery; end
 
 ### Using Arcane in your controller
 
-Next up, using the `refine` helper. The helper can be called from anywhere in your controller and views
-and accepts one parameter, the object for which you want to *refine* the parameters, then followed by
-calling the method for what parameters you want.
+Next up, using the Arcane methods. There first three are; `for`, `as`, `on` and can all be called on
+an instance of rails params, chained, and in any order you want. The fourth one, `refine` you call to
+pull your parameters through a refinery.
+
+* `for` - The model or object you want to filter parameters
+* `as` - The user performing the action, by default `current_user`
+* `on` - The action or rather, refinery method that is called
+
+* `refine` - Wraps everything up and finds your desired filter.
 
 ```ruby
-refined_params = refine @article, :create
+refined_params = params.for(@article).as(current_user).on(:update).refine
 ```
 
-In context of the controller method it might look something like this:
+Here's an example of how a controller can look with Arcane paramters.
 
 ```ruby
-class ArticlesController < ApplicationController
-
+class GameController < ApplicationController
   def create
-    @article = Article.new(refine(Article,:create))
-    @article.save
+    @game = Game.create(params.for(Game).as(user_from_location).refine)
   end
 
   def update
-    @article = Article.find(params[:id])
-    @article.update_attributes(refine(@article,:update))
+    @article.find(params[:id])
+    @article.update_attributes params.for(@article).as(current_user).refine
   end
 
-end
+  def update_many
+    @games = Game.find(params[:ids])
+    @games.each do |game|
+      game.update_attributes(params.for(@game).on(:update).refine)
+    end
+  end
 
+private
+
+  def user_from_location
+    # ...
+  end
+end
 ```
 
 ## Features
 
-### Custom Parameters
-Arcane isn't all magic (though mostly). You can pass your own parameters to the `refine` method, without
-having to worry which order you put them in as long as the permit object is the first one.
+### Invokable anywhere.
+As arcane extends ActionController::Parameters you can invoke in anywhere and start toying around with
+the arcane methods. This is good if you have some other way of getting data in to your application outside
+the context of a controller.
 
 ```ruby
-  my_params = { article: { title: "Hello" } }
-  refine(@article,my_params,:create)
-  refine(@article,:update,my_params)
+  @user, @post = User.find(1), Post.find(24)
+
+  my_params = ActionController::Parameters.new({ post: { content: "Hello" } })
+  my_params.for(@post).as(@user).on(:create)
 ```
 
 ### Automatic Method Detection
-If you have specified no refinery method in your call to `refine`, Arcane tries to find out for itself
-what method to use. If you send the params in from a rails controller, Arcane will use the `action` key
-on the parameters and use your refinery. *If you want to know how to handle fallbacks, see next feature.*
+If you have specified no refinery action in your chain to params, Arcane tries to find out for itself
+what method to use. Arcane uses the action key in the rails parameters to determine the refinery method.
 
 ```ruby
 class CommentsController < ApplicationController
   def update
     @comment = Comment.find(params[:id])
-    @comment.update_attributes refine @comment
+    @comment.update_attributes params.for(@comment)
+  end
+end
+
+class CommentRefinery < Arcane::Refinery
+  def update
+    [:email,:name,:text]
   end
 end
 ```
