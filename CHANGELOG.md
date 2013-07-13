@@ -1,4 +1,4 @@
-### Arcane **1.0.0.pre** [head] - 2013-07-12
+### Arcane **1.0.0** [current][head] - 2013-07-12
 * **[deprecation]** The `refine` helper no longer
   exist, as it's a proposed keyword for ruby 2.0 look
   to the new features for how to access arcane.
@@ -16,7 +16,7 @@
 * **[bugfix]** You can now properly specify
   `refinery_class` in your model.
 
-### Arcane **0.1.1** [current] – 2013-07-11
+### Arcane **0.1.1** [old] – 2013-07-11
 * **[feature]** The `refine` helper no longer needs a
   refinery method, it will try and detect which one to
   use based on parameters.
