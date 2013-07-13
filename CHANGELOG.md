@@ -1,4 +1,4 @@
-### Arcane **1.0.0** [current][head] - 2013-07-12
+### Arcane **1.0.0** [current][head] - 2013-07-13
 * **[deprecation]** The `refine` helper no longer
   exist, as it's a proposed keyword for ruby 2.0 look
   to the new features for how to access arcane.
