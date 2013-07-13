@@ -1,0 +1,8 @@
+Description:
+    Generates a refinery for a model with the given name.
+
+Example:
+    rails generate arcane:refinery user
+
+    This will create:
+        app/refineries/user_refinery.rb

@@ -15,8 +15,24 @@ Inspired by [Pundit](https://github.com/elabs/pundit)
 
 **This branch is showing a pre-release of Arcane, to install the this release, do this:**
 
+## Installation
+
+Add this line to your application's Gemfile:
+
 ```ruby
-  gem "arcane", "~> 1.0.0.pre"
+gem "arcane", "~> 1.0.0.pre"
+```
+
+And then execute:
+
+```bash
+$ bundle
+```
+
+To install arcane, execute:
+
+```bash
+rails g arcane:install
 ```
 
 ## Usage
@@ -56,6 +72,11 @@ end
 Before you can use the parameter methods, you need a Refinery for the model you want to pass parameters to.
 Simply create the directory `/app/refineries` in your Rails project. Create a Refinery your model, in this
 case Article. `/app/refineries/article_refinery.rb`. Create a class in that file called `ArticleRefinery`.
+You can also use the rails generator below:
+
+```bash
+rails g arcane:refinery article
+```
 
 Methods defined in the refinery should reflect the controller method for clarity, but can be anything you
 want it to be. These methods must return an array containing the same parameters you would otherwise send
@@ -278,24 +299,10 @@ Currently this gem is only supported for Rails and with any of these ruby versio
 * jruby-19
 * rbx-19
 
-## Installation
-
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'arcane'
-```
-
-And then execute:
-
-```bash
-$ bundle
-```
-
 ## To-do
 
 - [x] Explain Arcane::Refinery
-- [-] Write rails generators
+- [x] Write rails generators
 - [x] List features
 - [x] Add Documentation
 - [x] Add documentation for HATEOAS
