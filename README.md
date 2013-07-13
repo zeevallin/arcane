@@ -20,7 +20,7 @@ Inspired by [Pundit](https://github.com/elabs/pundit)
 Add this line to your application's Gemfile:
 
 ```ruby
-gem "arcane", "~> 1.0.0.pre"
+gem "arcane", "~> 1.0.0"
 ```
 
 And then execute:

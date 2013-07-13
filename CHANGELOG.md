@@ -8,6 +8,11 @@
   refine your parameters. Look in `README.md` for
   detailed information.
 
+* **[feature]** Introducing most rails generators
+  to easily create generators for your class in the
+  command line. Read Look in `README.md` for
+  detailed information.
+
 * **[bugfix]** You can now properly specify
   `refinery_class` in your model.
 
