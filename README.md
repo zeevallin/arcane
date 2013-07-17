@@ -318,8 +318,30 @@ Currently this gem is only supported for Rails and with any of these ruby versio
 
 ## Contributing
 
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+#### 1. Fork us
+#### 2. Create your feature branch
+
+```bash
+git checkout -b my-new-feature
+```
+
+#### 3. Running specs
+
+```bash
+# Rails 3
+env BUNDLE_GEMFILE=./gemfiles/rails3.gemfile bundle exec rspec
+# Rails 4
+env BUNDLE_GEMFILE=./gemfiles/rails4.gemfile bundle exec rspec
+```
+
+#### 4. Commit your changes
+```bash
+git commit -am 'Add some feature'
+```
+
+#### 5. Push to the branch
+```
+git push origin my-new-feature
+```
+
+#### 6. Create new Pull Request
