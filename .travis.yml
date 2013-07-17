@@ -4,9 +4,9 @@ rvm:
   - 1.9.3
   - 1.9.2
   - jruby-19mode
+  - jruby-20mode
   - rbx-19mode
 
-env:
-  - "strong_parameters=0.2.1"
-  - "activesupport=3.2.13"
-  - "activesupport=4.0.0"
+gemfile:
+  - gemfiles/activesupport3.gemfile
+  - gemfiles/activesupport4.gemfile
