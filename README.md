@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/cloudsdaleapp/arcane.png?branch=master)](https://travis-ci.org/cloudsdaleapp/arcane)
 [![Gem Version](https://badge.fury.io/rb/arcane.png)](http://badge.fury.io/rb/arcane)
+[![Dependency Status](https://gemnasium.com/cloudsdaleapp/arcane.png)](https://gemnasium.com/cloudsdaleapp/arcane)
 
 Easy to use parameter management, extending [Strong Parameters](https://github.com/rails/strong_parameters),
 making them a first class citizen. Arcane provides you with helpers which guide you in leveraging regular
