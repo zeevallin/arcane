@@ -1,4 +1,11 @@
-### Arcane **1.0.0** [current][head] - 2013-07-13
+### Arcane **1.1.0** [head] - 2013-07-17
+* **[bugfix]** Fixed dependency hell for rails 4.
+Makde sure strong_parameters is optional. Upgrading
+to this will break compatability with rails 3 unless
+you have specifically added `strong_parameters` to
+your Gemfile already.
+
+### Arcane **1.0.0** [current] - 2013-07-13
 * **[deprecation]** The `refine` helper no longer
   exist, as it's a proposed keyword for ruby 2.0 look
   to the new features for how to access arcane.
