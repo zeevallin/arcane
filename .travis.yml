@@ -6,7 +6,6 @@ rvm:
   - jruby-19mode
   - rbx-19mode
 
-env:
-  - "strong_parameters=0.2.1"
-  - "activesupport=3.2.13"
-  - "activesupport=4.0.0"
+gemfile:
+  - gemfiles/activesupport3.gemfile
+  - gemfiles/activesupport4.gemfile
