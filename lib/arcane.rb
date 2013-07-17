@@ -1,7 +1,12 @@
 require 'active_support/concern'
 require 'active_support/core_ext/string/inflections'
 require 'active_support/core_ext/object/blank'
-require 'strong_parameters'
+require 'action_controller'
+
+begin
+  require 'strong_parameters'
+rescue LoadError
+end
 
 require "arcane/version"
 require "arcane/finder"

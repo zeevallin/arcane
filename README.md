@@ -23,6 +23,12 @@ Add this line to your application's Gemfile:
 gem "arcane", "~> 1.0.0"
 ```
 
+If you are still on Rails 3, add this to your Gemfile as well:
+
+```ruby
+gem "strong_parameters", "~> 0.2.0"
+```
+
 And then execute:
 
 ```bash
