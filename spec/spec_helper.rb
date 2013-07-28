@@ -1,3 +1,7 @@
+require 'coveralls'
+
+Coveralls.wear!
+
 require "arcane"
 require "pry"
 require "active_support/core_ext"
