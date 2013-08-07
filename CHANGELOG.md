@@ -1,4 +1,10 @@
-### Arcane **1.1.0** [head][current] - 2013-07-17
+### Arcane **1.1.1** [head][current] - 2013-07-17
+* **[bugfix]** Handle nil paramaters params as
+  @caulfield suggested in pull request #7. Thank you.
+  This doesn't break any functionality other than expecting
+  nil to return an error on use of nil parameters.
+
+### Arcane **1.1.0** - 2013-07-17
 * **[bugfix]** Fixed dependency hell for rails 4.
   Makde sure strong_parameters is optional. Upgrading
   to this will break compatability with rails 3 unless
