@@ -40,7 +40,11 @@ module Arcane
   end
 
   def params=(val)
-    @_params = val.kind_of?(Hash) ? ActionController::Parameters.new(val).as(current_params_user) : val.as(current_params_user)
+    @_params = if Hash === val
+                 ActionController::Parameters.new(val).as(current_params_user)
+               else
+                 val.respond_to?(:as) ? val.as(current_params_user) : val
+               end
   end
 
 end
