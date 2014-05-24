@@ -11,6 +11,16 @@ describe Arcane do
     it 'sets the user for parameters' do
       controller.params.user.should eq user
     end
+
+    context 'when #arcane_user defined in controller' do
+      let(:arcane_user)  { double(name: 'arcane_user') }
+
+      before { controller.stub(arcane_user: arcane_user) }
+
+      it 'sets this user instead of #current_user for parameters' do
+        controller.params.user.should eq arcane_user
+      end
+    end
   end
 
   describe '#params=' do
