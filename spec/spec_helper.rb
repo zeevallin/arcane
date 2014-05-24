@@ -7,6 +7,12 @@ require "pry"
 require "active_support/core_ext"
 require "active_model/naming"
 
+RSpec.configure do |c|
+  c.before :suite do
+    ActiveSupport::Deprecation.silenced = true
+  end
+end
+
 class NilModel; end
 class NilModelRefinery < Struct.new(:object,:user)
 

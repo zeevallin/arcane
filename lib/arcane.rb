@@ -32,7 +32,12 @@ module Arcane
   end
 
   def current_params_user
-    respond_to?(:current_user) ? current_user : nil
+    _arcane_user = respond_to?(:arcane_user) ? arcane_user : nil
+    _current_user = respond_to?(:current_user) ? current_user : nil
+    if !_arcane_user && _current_user
+      show_deprecation_message
+    end
+    _arcane_user || _current_user
   end
 
   def params
@@ -45,6 +50,13 @@ module Arcane
                else
                  val.respond_to?(:as) ? val.as(current_params_user) : val
                end
+  end
+
+  private
+
+  def show_deprecation_message
+    message = 'Arcane found `current_user` and not found `arcane_user`. Please define `arcane_user` for your refineries. This might not work in future.'
+    ActiveSupport::Deprecation.warn message
   end
 
 end
