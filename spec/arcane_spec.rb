@@ -1,5 +1,19 @@
 require 'spec_helper'
 
+class MockController
+  attr_accessor :request, :user
+  def initialize(request, user)
+    @request, @user = request, user
+  end
+end
+
+class MockNoUserController
+  attr_accessor :request
+  def initialize(request)
+    @request = request
+  end
+end
+
 describe Arcane do
 
   let(:user)       { double(name: :user) }
@@ -29,6 +43,15 @@ describe Arcane do
     it 'handles nil' do
       controller.params = nil
       controller.instance_variable_get(:@_params).should be_nil
+    end
+  end
+
+  describe "#current_params_user" do
+    context "when there is no current user" do
+      let(:controller) { MockNoUserController.new(request).tap { |c| c.extend(Arcane) } }
+      it "should raise a no method error" do
+        expect { controller.current_params_user }.to raise_exception NameError
+      end
     end
   end
 

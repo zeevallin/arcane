@@ -1,4 +1,9 @@
-### Arcane **1.1.1** [head][current] - 2013-07-17
+### Arcane **1.2.0** [head] - 2015-03-18
+* **[breaking change]** If `current_user` is not
+  specified `current_params_user` will raise a
+  `NameError`.
+
+### Arcane **1.1.1** [current] - 2013-07-17
 * **[bugfix]** Handle nil paramaters params as
   @caulfield suggested in pull request #7. Thank you.
   This doesn't break any functionality other than expecting
