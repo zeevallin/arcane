@@ -22,7 +22,7 @@ Inspired by [Pundit](https://github.com/elabs/pundit)
 Add this line to your application's Gemfile:
 
 ```ruby
-gem "arcane", "~> 1.0.0"
+gem "arcane", "~> 1.2.0"
 ```
 
 If you are still on Rails 3, add this to your Gemfile as well:
