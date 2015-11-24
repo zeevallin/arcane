@@ -32,7 +32,7 @@ module Arcane
   end
 
   def current_params_user
-    respond_to?(:current_user) ? current_user : nil
+    current_user
   end
 
   def params
