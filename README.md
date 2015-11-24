@@ -1,9 +1,8 @@
 # Arcane
 
-[![Build Status](https://travis-ci.org/cloudsdaleapp/arcane.png?branch=master)](https://travis-ci.org/cloudsdaleapp/arcane)
-[![Coverage Status](https://coveralls.io/repos/cloudsdaleapp/arcane/badge.png)](https://coveralls.io/r/cloudsdaleapp/arcane)
-[![Code Climate](https://codeclimate.com/repos/51e6d15913d6373751014a5a/badges/c2f7e13ed4e4f06be966/gpa.png)](https://codeclimate.com/repos/51e6d15913d6373751014a5a/feed)
-[![Gem Version](https://badge.fury.io/rb/arcane.png)](http://badge.fury.io/rb/arcane)
+[![Build Status](https://travis-ci.org/zeeraw/arcane.svg?branch=master)](https://travis-ci.org/zeeraw/arcane)
+[![Coverage Status](https://coveralls.io/repos/cloudsdaleapp/arcane/badge.svg?branch=master&service=github)](https://coveralls.io/github/cloudsdaleapp/arcane?branch=master)
+[![Gem Version](https://badge.fury.io/rb/arcane.svg)](https://badge.fury.io/rb/arcane)
 [![Dependency Status](https://gemnasium.com/cloudsdaleapp/arcane.png)](https://gemnasium.com/cloudsdaleapp/arcane)
 
 Easy to use parameter management, extending [Strong Parameters](https://github.com/rails/strong_parameters),
