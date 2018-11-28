@@ -1,3 +1,5 @@
+# !!! PROJECT IS NO LONGER BEING MAINTAINED !!!
+
 # Arcane
 
 [![Build Status](https://travis-ci.org/zeeraw/arcane.svg?branch=master)](https://travis-ci.org/zeeraw/arcane)
